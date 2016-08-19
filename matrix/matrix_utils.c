@@ -1,27 +1,24 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   matrix_utils.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: smamba <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/08/19 15:54:13 by smamba            #+#    #+#             */
+/*   Updated: 2016/08/19 15:55:57 by smamba           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "matrix.h"
 
-void	print(t_matrix *a)
+void	ft_swap(t_f64 *a, t_f64 *b)
 {
-	printf("printing %ix%i matrix..\n\n", a->rows, a->cols);
-	int	i, j;
+	t_f64	tmp;
 
-	i = 0;
-	if (a->mat == NULL)
-		printf("NULL matrix...");
-	while (i < a->rows)
-	{
-		j = 0;
-		while (j < a->cols)
-		{
-			printf("%f ", a->mat[i][j]);
-			j++;
-		}
-		printf("\n");
-		i++;
-	}
-	printf("----------------------------------------\n\n\n");
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
 }
 
 t_mat	dup_mat(t_mat *src)

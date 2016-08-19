@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mat_ops.c                                    :+:      :+:    :+:   */
+/*   ft_matrix_ops.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smamba <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/08/07 15:48:43 by smamba            #+#    #+#             */
-/*   Updated: 2016/08/07 18:48:09 by smamba           ###   ########.fr       */
+/*   Created: 2016/08/19 15:51:52 by smamba            #+#    #+#             */
+/*   Updated: 2016/08/19 15:52:48 by smamba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ t_mat	transpose_mat(t_mat *m)
 	mat = new_mat(m->cols, m->rows, 0);
 	if (mat.mat == NULL)
 		perror("Matrix: Error matrix creation\n");
-	while (i < m->cols)
+	while (i < m->rows)
 	{
 		j = 0;
-		while (j < m->rows)
+		while (j < m->cols)
 		{
-			mat.mat[i][j] = m->mat[j][i];
+			mat.mat[j][i] = m->mat[i][j];
 			j++;
 		}
 		i++;
@@ -54,7 +54,7 @@ t_mat44	multiply_mat44(t_mat44 a, t_mat44 b)
 				temp.mat[i][j]--;
 			while (k < 4)
 			{
-				temp.mat[i][j] += a.mat[i][k] * b.mat[k][j]; 
+				temp.mat[i][j] += a.mat[i][k] * b.mat[k][j];
 				k++;
 			}
 			j++;
@@ -64,7 +64,7 @@ t_mat44	multiply_mat44(t_mat44 a, t_mat44 b)
 	return (temp);
 }
 
-t_vec3f		vector_multiply(t_vec3f v, t_mat44 m)
+t_vec3f	vector_multiply(t_vec3f v, t_mat44 m)
 {
 	t_f64	a;
 	t_f64	b;
@@ -86,7 +86,7 @@ t_vec3f		vector_multiply(t_vec3f v, t_mat44 m)
 	return (dst);
 }
 
-t_vec3f		vector_dir_multiply(t_vec3f v, t_mat44 m)
+t_vec3f	vector_dir_multiply(t_vec3f v, t_mat44 m)
 {
 	t_vec3f	dst;
 

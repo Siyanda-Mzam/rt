@@ -19,7 +19,7 @@ t_bool	solve_quadratic(t_f64 a, t_f64 b, t_f64 c, t_f64 *x0, t_f64 *x1)
 	dis = b * b - 4 * a * c;
 	if (dis < 0)
 		return (FALSE);
-	if ((-b - sqrt(dis)) / (2 * a) < 0)
+	if (!((-b - sqrt(dis)) / (2 * a) > 0))
 		return (FALSE);
 	*x0 = (-b - sqrt(dis)) / (2 * a);
 	*x1 = (-b + sqrt(dis)) / (2 * a);
@@ -39,4 +39,11 @@ t_f64	ft_max(const t_f64 a, const t_f64 b)
 t_f64	ft_min(const t_f64 a, const t_f64 b)
 {
 	return (a > b ? (b) : (a));
+}
+
+void	ft_exit(int code, char *msg)
+{
+	ft_putstr(msg);
+	ft_putchar('\n');
+	exit(code);
 }

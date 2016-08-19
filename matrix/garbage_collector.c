@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   garbage_collector.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: smamba <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/08/18 18:07:42 by smamba            #+#    #+#             */
+/*   Updated: 2016/08/18 18:19:42 by smamba           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "matrix.h"
 
@@ -16,21 +27,24 @@ void		manual_dispose(t_matrix *m)
 	i = 0;
 	while (i < g_cnt)
 	{
-		if (g_garbage[i].id == m->id)
-		{
-			g_garbage[i] = g_garbage[g_cnt];
-			g_cnt--;
-		}
+		if (g_garbage[i].mat == m->mat)
+			g_garbage[i].mat = NULL;
 		i++;
 	}
+	m->mat = NULL;
 }
 
-void		dispose_garbage()
+void		dispose_garbage(void)
 {
-	while (g_cnt > 0)
+	int	i;
+
+	i = 0;
+	while (i < g_cnt)
 	{
-		if (g_garbage[g_cnt].mat != NULL)
-			kill_matrix(&g_garbage[g_cnt]);
-		g_cnt--;
+		if (g_garbage[i].mat != NULL)
+		{
+			kill_matrix(&g_garbage[i]);
+		}
+		i++;
 	}
 }

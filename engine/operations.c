@@ -32,7 +32,7 @@ t_color		compute_ideal_refractions(t_ray *r, t_bool inside, t_params p)
 	t_f64	cosi;
 	t_f64	k;
 
-	eta = (inside) ? (1.1) : (1 / 1.1);
+	eta = (inside) ? (1.5) : (1 / 1.5);
 	cosi = -dot_vec3f(&p.nhit, &r->dir);
 	k = 1 - eta * eta * (1 - cosi * cosi);
 	refrac_dir = scale_vec3f(&p.nhit, eta * cosi - sqrt(k));

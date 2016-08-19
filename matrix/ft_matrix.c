@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mat.c                                        :+:      :+:    :+:   */
+/*   ft_matrix.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: smamba <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/08/07 14:52:49 by smamba            #+#    #+#             */
-/*   Updated: 2016/08/07 16:27:26 by smamba           ###   ########.fr       */
+/*   Created: 2016/08/19 15:50:17 by smamba            #+#    #+#             */
+/*   Updated: 2016/08/19 15:50:52 by smamba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,26 +37,29 @@ static t_f64	**new_2d_arr(int r, int c, int dvalue)
 	return (arr);
 }
 
-t_mat		new_mat(int r, int v, t_f64 dv)
+t_mat			new_mat(int r, int v, t_f64 dv)
 {
-	t_mat	mat;
+	static int	cnt = 0;
+	t_mat		mat;
 	t_f64		**arr;
 
+	cnt = cnt + 1;
 	arr = new_2d_arr(r, v, dv);
 	mat.mat = arr;
 	mat.rows = r;
 	mat.cols = v;
+	mat.age = cnt;
 	mat.id = (t_i32)arr;
 	garbage_collector(mat);
 	return (mat);
 }
 
-t_mat44		new_mat44(t_f64 f)
+t_mat44			new_mat44(t_f64 f)
 {
 	return ((t_mat44)new_mat(4, 4, f));
 }
 
-t_mat44		new_translation_mat44()
+t_mat44			new_translation_mat44(void)
 {
 	int		c;
 	t_mat	m;
@@ -79,9 +82,11 @@ void			kill_matrix(t_mat *mat)
 	if (mat->mat != NULL)
 	{
 		while (r < mat->rows)
-			free(mat->mat[r++]);
+		{
+			free(mat->mat[r]);
+			r++;
+		}
 		free(mat->mat);
-		mat->mat = NULL;
 		manual_dispose(mat);
 	}
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   transformation_matrices.c                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: smamba <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/08/19 16:10:35 by smamba            #+#    #+#             */
+/*   Updated: 2016/08/19 16:10:36 by smamba           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "matrix.h"
 
 t_mat44	new_rotation_mat44(const int type, t_f64 angle)
@@ -37,10 +49,8 @@ t_mat44	new_orientation_mat44(t_vec3f rot_vec)
 	t_mat44	mat_xyz;
 
 	mat_x = new_rotation_mat44(ROTATE_X, rot_vec.x);
-
 	mat_y = new_rotation_mat44(ROTATE_Y, rot_vec.y);
 	mat_z = new_rotation_mat44(ROTATE_Z, rot_vec.z);
-
 	mat_xyz = multiply_mat44(mat_x, mat_y);
 	mat_xyz = multiply_mat44(mat_xyz, mat_z);
 	kill_matrix(&mat_x);

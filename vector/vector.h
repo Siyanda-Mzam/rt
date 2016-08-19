@@ -6,11 +6,12 @@
 /*   By: smamba <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/07 16:46:23 by smamba            #+#    #+#             */
-/*   Updated: 2016/08/07 17:49:57 by smamba           ###   ########.fr       */
+/*   Updated: 2016/08/19 15:48:41 by smamba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VECTOR_H
+# define VECTOR_H
 # include <math.h>
 # include <stdlib.h>
 
@@ -27,7 +28,7 @@ typedef struct	s_vec3f
 	t_f64	z;
 }				t_vec3f;
 
-typedef struct  s_vec2f
+typedef struct	s_vec2f
 {
 	t_f64	x;
 	t_f64	y;
@@ -45,5 +46,4 @@ t_vec3f			scale_vec3f(t_vec3f *s, t_f64 scale);
 t_vec3f			cross_vec3f(t_vec3f *v1, t_vec3f *v2);
 t_f64			length_vec3f(t_vec3f *vec);
 t_f64			dot_vec3f(t_vec3f *v1, t_vec3f *v2);
-
 #endif

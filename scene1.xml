@@ -1,0 +1,61 @@
+<scene>
+	<camera type="LookAt">
+		<pos>0, 0, 15</pos>
+		<lookat>0, 0, -1</lookat>
+		<up>0, 1, 0</up>
+		<samples>32</samples>
+		<fov>30</fov>
+	</camera>
+
+	<plane>
+		<pos>-8, 0, 0</pos>
+		<size>0, 10, 0</size>
+		<color>0.5, 0.8, 0.5</color>
+	</plane>
+
+	<plane>
+		<pos>0, -2, 0</pos>
+		<size>0, 0, 0</size>
+		<color>0.75, 0.75, 0.75</color>
+	</plane>
+
+	<plane>
+		<pos>9, 0, 0</pos>
+		<size>0, 10, 0</size>
+		<color>0.9, 0.3, 0.3</color>
+	</plane>
+
+	<plane>
+		<pos>0, 0, -30</pos>
+		<size>0, 10, 0</size>
+		<color>0.3, 0.3, 0.5</color>
+	</plane>
+
+	<light type="POINT_LIGHT">
+		<pos>-1, 20, 4</pos>
+		<color>1, 1, 1</color>
+		<intensity>4</intensity>
+	</light>
+
+	<sphere>
+		<pos>-2, 0, -15</pos>
+		<radius>2</radius>
+		<orientation>0.0, 0.0, 0.0</orientation>
+		<reflection>TRUE</reflection>
+		<color>1, 0.32, 0.35</color>
+	</sphere>
+
+	<sphere>
+		<pos>5, 0, -10</pos>
+		<radius>1.5</radius>
+		<color>0.95, 0.47, 0.77</color>
+	</sphere>
+
+	<cylinder>
+		<pos>-5, -1, -28</pos>
+		<orientation>0, 0, 0</orientation>
+		<radius>2</radius>
+		<reflection>TRUE</reflection>
+		<color>0.9, 0.76, 0.46</color>
+	</cylinder>
+</scene>
