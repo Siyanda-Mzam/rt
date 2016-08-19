@@ -6,7 +6,7 @@
 /*   By: smamba <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/21 10:52:52 by smamba            #+#    #+#             */
-/*   Updated: 2016/08/19 17:59:00 by smamba           ###   ########.fr       */
+/*   Updated: 2016/08/19 18:04:36 by smamba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_bool	solve_quadratic(t_f64 a, t_f64 b, t_f64 c, t_f64 *x0, t_f64 *x1)
 	if (dis < 0)
 		return (FALSE);
 	if (!((-b - sqrt(dis)) / (2 * a) > 0))
-		return (FALSE);
+	return (FALSE);
 	*x0 = (-b - sqrt(dis)) / (2 * a);
 	*x1 = (-b + sqrt(dis)) / (2 * a);
 	return (TRUE);
