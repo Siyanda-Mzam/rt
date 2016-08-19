@@ -3,7 +3,7 @@
 		<pos>0, 0, 15</pos>
 		<lookat>0, 0, -1</lookat>
 		<up>0, 1, 0</up>
-		<samples>32</samples>
+		<samples>1</samples>
 		<fov>30</fov>
 	</camera>
 

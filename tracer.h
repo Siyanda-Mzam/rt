@@ -6,7 +6,7 @@
 /*   By: smamba <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/08 15:14:28 by smamba            #+#    #+#             */
-/*   Updated: 2016/08/18 17:58:45 by smamba           ###   ########.fr       */
+/*   Updated: 2016/08/19 17:47:45 by smamba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stdlib.h>
 # include <libft.h>
 # include <mlx.h>
+# include <stdarg.h>
 # include "keys.h"
 # define WIDTH 1000
 # define HEIGHT 900
@@ -172,6 +173,6 @@ t_vec2f			maya_style(int x, int y, t_interface *env);
 t_vec2f			default_style(int x, int y, t_interface *env);
 t_interface		init_tracer();
 void			kill_camera(t_camera *m);
-void			ft_exit(int code, char *msg);
+void			ft_exit(int code, const char *msg, ...);
 t_ray			transform_ray(t_ray *ray, t_mat44 mat);
 #endif

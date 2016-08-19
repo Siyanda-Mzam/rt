@@ -6,7 +6,7 @@
 /*   By: smamba <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/19 15:11:10 by smamba            #+#    #+#             */
-/*   Updated: 2016/08/19 15:22:05 by smamba           ###   ########.fr       */
+/*   Updated: 2016/08/19 18:00:50 by smamba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ t_camera	get_camera(ezxml_t tree)
 
 	node = ezxml_child(tree, "camera");
 	if (node == NULL)
-		ft_exit(0, "IOError: Could not find camera node in scene file");
+		ft_exit(0, "IOError: Could not find camera tag in scene file");
 	type = ezxml_attr_value(node, "type");
 	if (!ft_strcmp(type, "LookAt"))
 		cam.type = LOOKAT;

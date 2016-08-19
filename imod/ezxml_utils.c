@@ -6,7 +6,7 @@
 /*   By: smamba <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/19 15:36:33 by smamba            #+#    #+#             */
-/*   Updated: 2016/08/19 15:37:57 by smamba           ###   ########.fr       */
+/*   Updated: 2016/08/19 18:00:02 by smamba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ const char	*ezxml_child_value(ezxml_t node, const char *name)
 
 	child = ezxml_child(node, name);
 	if (child == NULL)
-		ft_exit(0, "IOError: Child not accessible");
+		ft_exit(0, "IOError: No accessible child named %s", name);
 	return (child->txt);
 }
 
@@ -48,7 +48,7 @@ const char	*ezxml_attr_value(ezxml_t xml, const char *attr)
 
 	val = ezxml_attr(xml, attr);
 	if (val == NULL)
-		ft_exit(0, "IOError: Attribute not accessible");
+		ft_exit(0, "IOError: No accessible attribute called %s", attr);
 	return (val);
 }
 
