@@ -6,7 +6,7 @@
 /*   By: smamba <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/19 18:16:02 by smamba            #+#    #+#             */
-/*   Updated: 2016/08/19 18:52:27 by smamba           ###   ########.fr       */
+/*   Updated: 2016/08/20 17:22:58 by smamba           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,17 @@ int		g_fds[10];
 
 void	print_tag(const char *tag)
 {
-	ft_putstr("   [");
+	ft_putstr(ANSI_YELLOW"  [");
 	ft_putstr(tag);
-	ft_putstr("]   ");
+	ft_putstr("]  "ANSI_RED);
 }
 
-void	log_base(const char *msg, const char *tag, ...)
+void	log_base(const char *msg, const char *tag, va_list valist)
 {
 	char	*tim;
-	va_list	valist;
 	time_t	now;
 
 	time(&now);
-	va_start(valist, tag);
 	tim = ctime(&now);
 	tim[ft_strlen(tim) - 1] = 0;
 	ft_putstr(tim);
