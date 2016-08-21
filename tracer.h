@@ -160,6 +160,7 @@ t_bool			plane_intersection(t_ray *r, t_object *s, t_f64 *t0, t_f64 *t1);
 t_bool			sphere_intersection(t_ray *r, t_object *s, t_f64 *t, t_f64 *a);
 t_bool			cone_intersection(t_ray *r, t_object *s, t_f64 *t, t_f64 *a);
 t_camera		new_camera(t_vec3f eye, t_vec3f target, t_vec3f up, t_f64 fov);
+t_mat44			 new_fps_matrix(t_vec3f eye, float pitch, float yaw);
 t_vec3f			sphere_normal(t_vec3f *phit, t_vec3f *pos, t_mat44 t);
 t_vec3f			cone_normal(t_vec3f *phit, t_vec3f *pos, t_mat44 t);
 t_vec3f			cylinder_normal(t_vec3f *phit, t_vec3f *pos, t_mat44 t);

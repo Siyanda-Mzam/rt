@@ -38,7 +38,7 @@
 	</light>
 
 	<sphere>
-		<pos>-2, 0, -15</pos>
+		<pos>-2, -30, -15</pos>
 		<radius>2</radius>
 		<orientation>0.0, 0.0, 0.0</orientation>
 		<reflection>TRUE</reflection>

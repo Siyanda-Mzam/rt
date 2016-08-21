@@ -6,7 +6,7 @@
 /*   By: smamba <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/07 16:38:48 by smamba            #+#    #+#             */
-/*   Updated: 2016/08/19 16:20:27 by smamba           ###   ########.fr       */
+/*   Updated: 2016/08/19 16:20:27 by simzam           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,30 @@ t_mat44	new_lookat_matrix(t_vec3f eye, t_vec3f target, t_vec3f up)
 	return (view);
 }
 
-t_mat44	new_fps_matrix(t_vec3f rot)
+t_mat44	new_fps_matrix(t_vec3f eye, float pitch, float yaw)
 {
+	float sin_yaw;
+	float cos_yaw;
+	float sin_pitch;
+	float cos_pitch;
+	t_vec3f xaxis;
+	t_vec3f yaxis;
+	t_vec3f zaxis;
 	t_mat44	view;
 
-	view = new_orientation_mat44(rot);
+	sin_yaw = sin(yaw);
+	cos_yaw = cos(yaw);
+	sin_pitch = sin(pitch);
+	cos_pitch = cos(pitch);
+	xaxis = (t_vec3f){cos_yaw, 0, -sin_yaw};
+	yaxis = (t_vec3f){sin_yaw * cos_pitch, cos_pitch, cos_yaw * sin_pitch};
+	zaxis = (t_vec3f){sin_yaw * cos_pitch, -sin_pitch, cos_pitch * cos_yaw};
+	set_row(view, 0, (t_f64[4]){xaxis.x, yaxis.x, zaxis.x, 0});
+	set_row(view, 1, (t_f64[4]){xaxis.y, yaxis.x, zaxis.x, 0});
+	set_row(view, 2, (t_f64[4]){xaxis.z, yaxis.z, zaxis.z, 0});
+	set_row(view, 3, (t_f64[4]){-dot_vec3f(&xaxis, &eye),
+								-dot_vec3f(&yaxis, &eye), 
+								-dot_vec3f(&zaxis, &eye), 1});
 	return (view);
 }
 

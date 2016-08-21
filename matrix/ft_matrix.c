@@ -49,7 +49,7 @@ t_mat			new_mat(int r, int v, t_f64 dv)
 	mat.rows = r;
 	mat.cols = v;
 	mat.age = cnt;
-	mat.id = (t_i32)arr;
+	mat.id = cnt;//(t_i32)arr;
 	garbage_collector(mat);
 	return (mat);
 }

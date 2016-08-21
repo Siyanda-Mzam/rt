@@ -15,7 +15,7 @@
 
 ezxml_t	open_scene(const char *file)
 {
-	ezxml_t	node;
+	//ezxml_t	node;
 	t_i32	fd;
 
 	if ((fd = open(file, O_RDONLY)) == -1)

@@ -44,7 +44,7 @@ t_f64	ft_min(const t_f64 a, const t_f64 b)
 void	ft_exit(const int code, const char *msg, ...)
 {
 	va_list	valist;
-	char	*param;
+	//char	*param;
 
 	va_start(valist, msg);
 	while (*msg)

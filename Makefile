@@ -40,16 +40,39 @@ SRC = main.c \
 
 NAME = RT
 
-PARAMS = -lmlx -framework OpenGL -framework AppKit -I libft/ -L libft -lft
+INC = -I. -I/usr/include/X11 -Iincludes/ -Ilibft/ -Ivector -Imatrix/
+
+LIXLIB = -lXext -lX11
+
+MACLIB = -framework OpenGL -framework AppKit -lm
+
+LIBS = -Llibft -lft -Limod/ezxml -lezxml -lmlx -lm
+
+OBJ = $(SRC:.c=.o)
+
+ARGS = -Wall -Wextra -Werror -g
+
 
 all: $(NAME)
 
-$(DEBUG): ARGS = -Wall -Wextra
+$(DEBUG): $(ARGS)
 
-$(NAME):
-	@make -C imod/ezxml clean all
-	@make -C libft/ 
-	@gcc -I. -L imod/ezxml -lezxml $(SRC) $(ARGS) $(LIBS) $(PARAMS) -I vector -lm -o $(NAME) -I matrix/
+%.o: %.c
+		@echo "\033[33m$^\033[0m changed.\nRecompiling..."
+		@gcc $(ARGS) -c -o $@ $^ $(INC)
+		@echo "\033[33m$^\033[0m Compiled."
+
+$(NAME): $(OBJ)
+
+ifeq ($(shell uname), Linux)
+		@make -s -C imod/ezxml clean all
+		@make -s -C libft/ 
+		@gcc $(ARGS) $(INC) $(SRC) $(LIBS) $(LIXLIB) -o $(NAME)
+else
+		@make -s -C imod/ezxml clean all
+		@make -s -C libft/ 
+		@gcc $(ARGS) $(INC) $(SRC) $(LIBS) $(MACLIB) -o $(NAME)
+endif
 
 clean:
 	@make -C libft/ clean
@@ -59,3 +82,5 @@ fclean: clean
 	@make -C libft/ fclean
 
 re: fclean all
+
+.PHONY: all clean fclean re

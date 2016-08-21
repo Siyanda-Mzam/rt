@@ -67,7 +67,7 @@ int		onkey_handler(int key, t_interface *env)
 {
 	if (key == ESC)
 	{
-		mlx_destroy_image(env->gui.mlx, env->gui.image);
+		//mlx_destroy_image(env->gui.mlx, env->gui.image);
 		mlx_destroy_window(env->gui.mlx, env->gui.win);
 		ft_exit(0, ANSI_GREEN"Info: Now exiting the program"ANSI_GREEN);
 	}
